@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario FACET</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+</head>
+
+<body class="">
+
+    <nav class="navbar navbar-expand-lg navbar-dark  mb-4 shadow-sm overflow-hidden">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
+
+                <img src="assets/Cabecera_web_facet_opc_04.png" alt="Logo FACET" class="w-100 object-fit">
+
+            </a>
+        </div>
+    </nav>
+
+    <h1 class="w-100 text-center mb-2 container-fluid mb-3 mb-sm-5  mt-2 ">CALENDARIO ACADEMICO</h1>
+
+    <main class="container mb-5">
+
+        <section class="card sombra-suave mb-4 border-0">
+            <div class="card-body">
+                <h5 class="card-title mb-3 text-secondary">Filtros de Búsqueda</h5>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="filtroCarrera" class="form-label fw-semibold">Carrera</label>
+                        <select id="filtroCarrera" class="form-select">
+                            <option value="">Seleccione una opcion...</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="filtroInstancia" class="form-label fw-semibold">Instancia de Evaluación</label>
+                        <select id="filtroInstancia" class="form-select">
+                            <option value="">Seleccione una opcion...</option>
+                            <option value="1° Parcial">1° Parcial</option>
+                            <option value="2° Parcial">2° Parcial</option>
+                            <option value="1° Recuperación">1° Recuperación</option>
+                            <option value="2° Recuperación">2° Recuperación</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-12 text-start mt-3">
+                    <button id="btnPDF" class="btn shadow-sm">
+                        Descargar Tabla (PDF) 📄
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="card shadow-sm border-0 sombra-suave rounded-3">
+            <div class="card-body p-0">
+                <div class="table-responsive bordes_azules">
+                    <table class="table table-hover table-striped align-middle mb-0 " id="tablaEventos">
+                        <thead class="table-light">
+                            <tr>
+                                <th scope="col" class="px-3">Carrera</th>
+                                <th scope="col">Materia</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Horario</th>
+                                <th scope="col">Aula/Espacios</th>
+                                <th scope="col" class="px-3">Observaciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cuerpoTabla">
+                            <tr id="filaCarga">
+
+                                <td colspan="6" class="text-center py-5">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">Cargando datos...</span>
+                                    </div>
+                                    <p class="mt-2 mb-0 text-muted">Sincronizando fechas...</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

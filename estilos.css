@@ -1,0 +1,41 @@
+body{
+    background-color: rgb(233, 233, 233) !important;
+}
+nav{
+    background-color: rgb(246, 246, 255);
+    height: 30dvh !important;
+}
+h1{
+    background-color: rgb(4, 4, 117);
+    color: white;
+    padding: 0.3em;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: 600 ;
+
+}
+
+#btnPDF{
+    color: white;
+    font-weight: 600;
+    background-color: rgb(4, 4, 117);
+
+}
+/* Sombra moderna, amplia y muy sutil */
+.sombra-suave {
+    box-shadow: 0 8px 24px rgba(149, 157, 165, 0.15) !important;
+    transition: box-shadow 0.3s ease-in-out; /* Le da un toque suave si después querés animarlo */
+}
+
+/* Opcional: Un leve efecto al pasar el mouse por encima (Hover) */
+.sombra-suave:hover {
+    box-shadow: 0 12px 32px rgba(149, 157, 165, 0.25) !important;
+}
+
+
+
+/* Regla condicional para dispositivos chicos (celulares) */
+@media (max-width: 768px) {
+    nav {
+        height: 15dvh !important;
+    }
+}
