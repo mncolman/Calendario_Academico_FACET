@@ -17,8 +17,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         poblarFiltroCarreras(datos);
 
-        renderizarTabla(datos);
-        console.log(datos);
+        renderizarTabla([]);
 
     } catch (error) {
         console.error("Error al obtener los eventos:", error);
@@ -80,11 +79,11 @@ function aplicarFiltros() {
 
     // Filtramos el array global que guardamos al principio
     const eventosFiltrados = eventosGlobales.filter(evento => {
-        const coincideCarrera = (valorCarrera === "") || (evento.Carrera === valorCarrera);
-        const coincideInstancia = (valorInstancia === "") || (evento.TipodeEvento === valorInstancia);
+        const coincideCarrera = (valorCarrera === "nada") || (evento.Carrera === valorCarrera);
+        const coincideInstancia = (valorInstancia === "nada") || (evento.TipodeEvento === valorInstancia);
 
         // Solo pasa si cumple con AMBOS filtros
-        return coincideCarrera && coincideInstancia;
+        return (coincideCarrera && coincideInstancia);
     });
 
     // Volvemos a pintar la tabla con la lista reducida
