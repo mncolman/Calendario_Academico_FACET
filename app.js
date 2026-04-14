@@ -1,5 +1,5 @@
 // 1. Reemplazá esto con la URL que te dio Apps Script al implementar la Web App
-const URL_API = "https://script.google.com/macros/s/AKfycbwyTo1ezN1D2LOLeV6l1Is6dPSJ8lI2z9C_zGoFWW6gSHj68Yes3DxChP_QSTX3eW1k/exec";
+const URL_API = "https://script.google.com/macros/s/AKfycbwJ3MR-wnwcQKlQAqKC-KrO8zl3oNS6vORdlqRHOaO1gRcIQ_KCN_D3bfcIO8uEi_6j/exec";
 
 // Variables globales para guardar los datos y referenciar el DOM
 let eventosGlobales = [];
@@ -10,16 +10,13 @@ const filtroInstancia = document.getElementById("filtroInstancia");
 // 2. Función principal que arranca al cargar la página
 document.addEventListener("DOMContentLoaded", async () => {
     try {
-        // Hacemos la petición a tu API
         const respuesta = await fetch(URL_API);
         const datos = await respuesta.json();
 
         eventosGlobales = datos;
 
-        // Llenamos el select de carreras dinámicamente
         poblarFiltroCarreras(datos);
 
-        // Renderizamos la tabla por primera vez
         renderizarTabla(datos);
         console.log(datos);
 
@@ -49,16 +46,13 @@ function renderizarTabla(eventosParaMostrar) {
         return;
     }
 
-    // Recorremos el array y creamos una fila por cada evento
     eventosParaMostrar.forEach(evento => {
         const fila = document.createElement("tr");
 
         fila.innerHTML = `
-            <td class="fw-semibold">${evento.Carrera || "-"}</td>
-            <td>${evento.Materia + " - " +evento.TipodeEvento || "-"}</td>
+            <td>${evento.Materia || "-"}</td>
             <td>${evento.Fecha || "-"}</td>
             <td class="text-nowrap">${evento.Hora || "-"}</td>
-            <td>${evento.Espacios || "-"}</td>
             <td class="text-muted small">${evento.Observaciones || ""}</td>
         `;
         cuerpoTabla.appendChild(fila);
