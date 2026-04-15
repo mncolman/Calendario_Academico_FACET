@@ -7,6 +7,25 @@ const cuerpoTabla = document.getElementById("cuerpoTabla");
 const filtroCarrera = document.getElementById("filtroCarrera");
 const filtroInstancia = document.getElementById("filtroInstancia");
 
+// Detecto si la URL tiene el parámetro ?modo=embed
+const parametrosURL = new URLSearchParams(window.location.search);
+
+if (parametrosURL.get('modo') === 'embed') {
+
+    const barraNavegacion = document.querySelector('nav');
+    const h1 = document.querySelector('h1');
+    if (barraNavegacion) {
+        barraNavegacion.classList.add('d-none');
+        h1.classList.add('d-none');
+    }
+
+    const contenedorMain = document.querySelector('main');
+    if (contenedorMain) {
+        contenedorMain.classList.remove('mt-4', 'mt-5','mb-5'); // Quita márgenes si le habías puesto
+    }
+}
+
+
 // 2. Función principal que arranca al cargar la página
 document.addEventListener("DOMContentLoaded", async () => {
     try {
@@ -82,15 +101,12 @@ function aplicarFiltros() {
         const coincideCarrera = (valorCarrera === "nada") || (evento.Carrera === valorCarrera);
         const coincideInstancia = (valorInstancia === "nada") || (evento.TipodeEvento === valorInstancia);
 
-        // Solo pasa si cumple con AMBOS filtros
         return (coincideCarrera && coincideInstancia);
     });
 
-    // Volvemos a pintar la tabla con la lista reducida
     renderizarTabla(eventosFiltrados);
 }
 
-// 6. Escuchamos cuando el usuario cambia algo en los <select>
 filtroCarrera.addEventListener("change", aplicarFiltros);
 filtroInstancia.addEventListener("change", aplicarFiltros);
 document.getElementById("btnPDF").addEventListener("click", () => {
@@ -98,7 +114,6 @@ document.getElementById("btnPDF").addEventListener("click", () => {
     const doc = new jsPDF('l', 'mm', 'a4'); 
 
     // --- 1. LÓGICA DE TÍTULO DINÁMICO ---
-    // Capturamos lo que el usuario eligió en los filtros
     const valCarrera = filtroCarrera.value;
     const valInstancia = filtroInstancia.value;
 
