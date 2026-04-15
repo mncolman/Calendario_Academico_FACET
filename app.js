@@ -70,7 +70,7 @@ function renderizarTabla(eventosParaMostrar) {
         fila.innerHTML = `
             <td>${evento.Materia || "-"}</td>
             <td>${evento.Fecha || "-"}</td>
-            <td class="text-nowrap">${evento.Hora || "-"}</td>
+            <td class="text-nowrap">${ evento.Turno? (evento.Turno==="TT")? "Tarde" :"Mañana" : "-"}</td>
             <td class="text-muted small">${evento.Observaciones || ""}</td>
         `;
         cuerpoTabla.appendChild(fila);
